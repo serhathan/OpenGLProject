@@ -153,6 +153,7 @@
     <None Include="Shaders\VertexShader.vs" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Libraries\include\stb_image.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
