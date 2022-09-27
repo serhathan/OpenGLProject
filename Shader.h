@@ -64,6 +64,7 @@ public:
 		glAttachShader(ID, vertex);
 		glAttachShader(ID, fragment);
 		glLinkProgram(ID);
+		glValidateProgram(ID);
 		checkCompileErrors(ID, "PROGRAM");
 		// delete the shaders as they're linked into our program now and no longer necessery
 		glDeleteShader(vertex);
@@ -141,13 +142,16 @@ private:
 	void checkCompileErrors(GLuint shader, std::string type)
 	{
 		GLint success;
-		GLchar infoLog[1024];
+		
 		if (type != "PROGRAM")
 		{
 			glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
 			if (!success)
 			{
-				glGetShaderInfoLog(shader, 1024, NULL, infoLog);
+				int length;
+				glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+				char* infoLog = (char*)alloca(length*sizeof(char));
+				glGetShaderInfoLog(shader, length, &length, infoLog);
 				std::cout << "ERROR::SHADER_COMPILATION_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 			}
 		}
@@ -156,7 +160,10 @@ private:
 			glGetProgramiv(shader, GL_LINK_STATUS, &success);
 			if (!success)
 			{
-				glGetProgramInfoLog(shader, 1024, NULL, infoLog);
+				int length;
+				glGetProgramiv(shader, GL_INFO_LOG_LENGTH, &length);
+				char* infoLog = (char*)alloca(length * sizeof(char));
+				glGetProgramInfoLog(shader, length, &length, infoLog);
 				std::cout << "ERROR::PROGRAM_LINKING_ERROR of type: " << type << "\n" << infoLog << "\n -- --------------------------------------------------- -- " << std::endl;
 			}
 		}
