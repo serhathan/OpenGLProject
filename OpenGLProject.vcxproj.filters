@@ -48,4 +48,10 @@
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\ColorShader.fs" />
+    <Text Include="Shaders\ColorShader.vs" />
+    <Text Include="Shaders\LightCube.fs" />
+    <Text Include="Shaders\LightCube.vs" />
+  </ItemGroup>
 </Project>

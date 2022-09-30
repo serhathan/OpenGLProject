@@ -162,6 +162,12 @@
     <Image Include="Resource\container.jpg" />
     <Image Include="Resource\wall.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Shaders\ColorShader.fs" />
+    <Text Include="Shaders\ColorShader.vs" />
+    <Text Include="Shaders\LightCube.fs" />
+    <Text Include="Shaders\LightCube.vs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
