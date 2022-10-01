@@ -50,6 +50,9 @@
     <Image Include="Resources\container2_specular.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\matrix.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Shaders\ColorShader.fs" />

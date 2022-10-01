@@ -161,6 +161,7 @@ int main()
 	// -----------------------------------------------------------------------------
 	unsigned int diffuseMap = loadTexture("Resources/container2.png");
 	unsigned int specularMap = loadTexture("Resources/container2_specular.png");
+	unsigned int emissionMap = loadTexture("Resources/matrix.jpg");
 
 
 	// shader configuration
@@ -168,7 +169,7 @@ int main()
 	lightingShader.use();
 	lightingShader.setInt("material.diffuse", 0);
 	lightingShader.setInt("material.specular", 1);
-
+	lightingShader.setInt("material.emission", 2);
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -192,6 +193,7 @@ int main()
 		lightingShader.use();
 		lightingShader.setVec3("light.position", lightPos);
 		lightingShader.setVec3("viewPos", camera.Position);
+		lightingShader.setFloat("time", glfwGetTime());
 
 		// light properties
 		lightingShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
@@ -218,6 +220,8 @@ int main()
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, specularMap);
 
+		glActiveTexture(GL_TEXTURE2);
+		glBindTexture(GL_TEXTURE_2D, emissionMap);
 		// render the cube
 		glBindVertexArray(cubeVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
