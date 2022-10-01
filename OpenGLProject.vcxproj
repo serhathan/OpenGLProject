@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\container.jpg" />
+    <Image Include="Resources\container2_specular.png" />
     <Image Include="Resource\container.jpg" />
     <Image Include="Resource\wall.jpg" />
   </ItemGroup>
