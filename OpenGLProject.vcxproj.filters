@@ -25,6 +25,8 @@
   <ItemGroup>
     <None Include="Shaders\FragmentShader.fs" />
     <None Include="Shaders\VertexShader.vs" />
+    <None Include="Shaders\Light.fs" />
+    <None Include="Shaders\Light.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
