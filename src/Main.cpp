@@ -5,6 +5,12 @@
 
 #include <iostream>
 #include "../Shader.h"
+#include "../VertexBuffer.h"
+#include "../IndexBuffer.h"
+#include "../VertexArray.h"
+#include "../BufferLayout.h"
+
+using namespace Aroa;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -64,7 +70,19 @@ int main()
 		1, 2, 3  // second triangle
 	};
 	unsigned int VBO, VAO, EBO;
-	glGenVertexArrays(1, &VAO);
+
+	VertexBuffer vb(vertices,sizeof(vertices));
+	IndexBuffer ib(indices,6);
+	Aroa::VertexArray va;
+
+	Aroa::BufferLayout layout;
+	layout.Push<float>(3);
+	layout.Push<float>(3);
+	layout.Push<float>(2);
+
+	va.AddBuffer(vb,layout);
+
+	/*glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
 
@@ -84,7 +102,7 @@ int main()
 	glEnableVertexAttribArray(1);
 	// texture coord attribute
 	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);
+	glEnableVertexAttribArray(2);*/
 
 	
 	// load and create a texture 
@@ -132,7 +150,11 @@ int main()
 
 		// render container
 		ourShader.use();
-		glBindVertexArray(VAO);
+
+		vb.Bind();
+		ib.Bind();
+		va.Bind();
+		//glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
@@ -143,9 +165,9 @@ int main()
 
 	// optional: de-allocate all resources once they've outlived their purpose:
 	// ------------------------------------------------------------------------
-	glDeleteVertexArrays(1, &VAO);
+	/*glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
-	glDeleteBuffers(1, &EBO);
+	glDeleteBuffers(1, &EBO);*/
 
 	// glfw: terminate, clearing all previously allocated GLFW resources.
 	// ------------------------------------------------------------------
