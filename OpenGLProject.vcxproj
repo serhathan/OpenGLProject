@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="IndexBuffer.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="VertexArray.cpp" />

@@ -2,23 +2,19 @@
 #include "VertexBuffer.h"
 #include "BufferLayout.h"
 
-namespace Aroa
+class VertexArray
 {
-	class VertexArray
-	{
-	public:
+public:
 
-		VertexArray();
-		~VertexArray();
+	VertexArray();
+	~VertexArray();
 
-		void AddBuffer(const VertexBuffer& vertexBuffer, const BufferLayout& layout);
+	void AddBuffer(const VertexBuffer& vertexBuffer, const BufferLayout& layout);
 
-		void Bind() const;
-		void Unbind() const;
+	void Bind() const;
+	void Unbind() const;
 
-	private:
-		unsigned int m_RendererID;
+private:
+	unsigned int m_RendererID;
 
-	};
-
-}
+};

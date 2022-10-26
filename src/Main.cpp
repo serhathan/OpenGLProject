@@ -69,7 +69,7 @@ int main()
 		0, 1, 3, // first triangle
 		1, 2, 3  // second triangle
 	};
-	unsigned int VBO, VAO, EBO;
+	//unsigned int VBO, VAO, EBO;
 
 	VertexBuffer vb(vertices,sizeof(vertices));
 	IndexBuffer ib(indices,6);
@@ -149,7 +149,7 @@ int main()
 		glBindTexture(GL_TEXTURE_2D, texture);
 
 		// render container
-		ourShader.use();
+		ourShader.Bind();
 
 		vb.Bind();
 		ib.Bind();
