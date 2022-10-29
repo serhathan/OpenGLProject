@@ -36,6 +36,9 @@
     <ClCompile Include="Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\FragmentShader.fs" />
@@ -45,7 +48,7 @@
     <ClInclude Include="Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Libraries\include\stb_image.h">
+    <ClInclude Include="Libraries\include\stb_image\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BufferLayout.h">
@@ -63,6 +66,9 @@
     <ClInclude Include="VertexBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resource\container.jpg">
@@ -72,6 +78,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\container.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

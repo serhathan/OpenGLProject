@@ -1,9 +1,9 @@
-#include "Shader.h"
 #include <glad/glad.h>
-#include <string>
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include "Shader.h"
+
 
 Shader::Shader(const char* vertexPath, const char* fragmentPath)
 	:m_RendererID(0)
@@ -33,12 +33,24 @@ void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2,
 	glUniform4f(GetUniformLocation(name),v0,v1,v2,v3);
 }
 
+void Shader::SetUniform1i(const std::string& name, int value)
+{
+	glUniform1i(GetUniformLocation(name),value);
+}
+
 int Shader::GetUniformLocation(const std::string& name)
 {
 	int location = glGetUniformLocation(m_RendererID,name.c_str());
 	
+	if (m_UniformLocationCache.find(name) !=m_UniformLocationCache.end())
+	{
+		return m_UniformLocationCache[name];
+	}
+	
 	if(location == -1)
 		std::cout<<"WARNING: UNIFORM :"<<name<<"DOESN'T EXIST"<<std::endl;
+		
+	m_UniformLocationCache[name]=location;
 
 	return location;
 }
@@ -83,18 +95,18 @@ unsigned int Shader::CreateShader(const char* vertexPath, const char* fragmentPa
 	vertex = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vertex, 1, &vShaderCode, NULL);
 	glCompileShader(vertex);
-	CheckCompileErrors(vertex, "VERTEX");
+	//CheckCompileErrors(vertex, "VERTEX");
 	// fragment Shader
 	fragment = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(fragment, 1, &fShaderCode, NULL);
 	glCompileShader(fragment);
-	CheckCompileErrors(fragment, "FRAGMENT");
+	//CheckCompileErrors(fragment, "FRAGMENT");
 	// shader Program
 	unsigned int program = glCreateProgram();
 	glAttachShader(program, vertex);
 	glAttachShader(program, fragment);
 	glLinkProgram(program);
-	CheckCompileErrors(program, "PROGRAM");
+	//CheckCompileErrors(program, "PROGRAM");
 	// delete the shaders as they're linked into our program now and no longer necessary
 	glDeleteShader(vertex);
 	glDeleteShader(fragment);
@@ -103,7 +115,7 @@ unsigned int Shader::CreateShader(const char* vertexPath, const char* fragmentPa
 }
 
 
-void CheckCompileErrors(unsigned int shader, std::string& type)
+void CheckCompileErrors(unsigned int shader, const char* type)
 {
 	int success;
 

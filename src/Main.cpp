@@ -1,6 +1,5 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <stb_image.h>
 
 
 #include <iostream>
@@ -9,8 +8,9 @@
 #include "../IndexBuffer.h"
 #include "../VertexArray.h"
 #include "../BufferLayout.h"
+#include "../Renderer.h"
+#include "../Texture.h"
 
-using namespace Aroa;
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow* window);
@@ -73,41 +73,18 @@ int main()
 
 	VertexBuffer vb(vertices,sizeof(vertices));
 	IndexBuffer ib(indices,6);
-	Aroa::VertexArray va;
+	VertexArray va;
 
-	Aroa::BufferLayout layout;
+	BufferLayout layout;
 	layout.Push<float>(3);
 	layout.Push<float>(3);
 	layout.Push<float>(2);
 
 	va.AddBuffer(vb,layout);
 
-	/*glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-
-	glBindVertexArray(VAO);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
-
-	// position attribute
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-	// color attribute
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
-	// texture coord attribute
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-	glEnableVertexAttribArray(2);*/
-
-	
 	// load and create a texture 
 	// -------------------------
-	unsigned int texture;
+	/*unsigned int texture;
 	glGenTextures(1, &texture);
 	glActiveTexture(GL_TEXTURE0); // activate the texture unit first before binding texture
 	glBindTexture(GL_TEXTURE_2D, texture);	// set the texture wrapping parameters
@@ -130,8 +107,16 @@ int main()
 		std::cout << "Failed to load texture" << std::endl;
 	}
 	stbi_image_free(data);
+	*/
 
+	Texture t1("Resources/container.jpg");
+	t1.Bind(2);
+	ourShader.Bind();
+	ourShader.SetUniform1i("ourTexture",2);
 
+	Renderer renderer;
+
+	
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
@@ -143,19 +128,12 @@ int main()
 		// render
 		// ------
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
+		renderer.Clear();
 		// bind Texture
-		glBindTexture(GL_TEXTURE_2D, texture);
+		//glBindTexture(GL_TEXTURE_2D, texture);
 
 		// render container
-		ourShader.Bind();
-
-		vb.Bind();
-		ib.Bind();
-		va.Bind();
-		//glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		renderer.Draw(va,ib,ourShader);
 
 		// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
 		// -------------------------------------------------------------------------------
