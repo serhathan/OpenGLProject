@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <unordered_map>
+#include "glm/mat4x4.hpp"
 
 class Shader
 {
@@ -21,6 +22,8 @@ public:
 
 	void SetUniform4f(const std::string& name, float v0,float v1,float v2,float v3);
 	void SetUniform1i(const std::string& name,int value);
+	void SetUniformMat4f(const std::string& name, const glm::mat4& matrix);
+
 private:
 
 	int GetUniformLocation(const std::string& name);

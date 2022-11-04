@@ -10,6 +10,8 @@
 #include "../BufferLayout.h"
 #include "../Renderer.h"
 #include "../Texture.h"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/glm.hpp"
 
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
@@ -71,8 +73,14 @@ int main()
 	};
 	//unsigned int VBO, VAO, EBO;
 
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+
 	VertexBuffer vb(vertices,sizeof(vertices));
 	IndexBuffer ib(indices,6);
+
+	glm::mat4 proj = glm::ortho(-2.0f,2.0f,-1.5f,1.5f,-1.0f,1.0f);
+
 	VertexArray va;
 
 	BufferLayout layout;
@@ -82,41 +90,16 @@ int main()
 
 	va.AddBuffer(vb,layout);
 
-	// load and create a texture 
-	// -------------------------
-	/*unsigned int texture;
-	glGenTextures(1, &texture);
-	glActiveTexture(GL_TEXTURE0); // activate the texture unit first before binding texture
-	glBindTexture(GL_TEXTURE_2D, texture);	// set the texture wrapping parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	// set texture filtering parameters
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// load image, create texture and generate mipmaps
-	int width, height, nrChannels;
-	// The FileSystem::getPath(...) is part of the GitHub repository so we can find files on any IDE/platform; replace it with your own image path.
-	unsigned char* data = stbi_load("Resources/container.jpg", &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		std::cout << "Failed to load texture" << std::endl;
-	}
-	stbi_image_free(data);
-	*/
 
-	Texture t1("Resources/container.jpg");
-	t1.Bind(2);
+
 	ourShader.Bind();
-	ourShader.SetUniform1i("ourTexture",2);
-
+	ourShader.SetUniformMat4f("u_MVP",proj);
 	Renderer renderer;
 
-	
+	Texture t1("Resources/container.jpg");
+	t1.Bind();
+	ourShader.SetUniform1i("ourTexture",0);
+
 	// render loop
 	// -----------
 	while (!glfwWindowShouldClose(window))
