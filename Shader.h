@@ -26,11 +26,11 @@ public:
 
 private:
 
-	int GetUniformLocation(const std::string& name);
+	int GetUniformLocation(const std::string& name) const;
 	unsigned int CreateShader(const char* vertexPath, const char* fragmentPath);
 	void CheckCompileErrors(unsigned int shader, std::string& type);
 
 private:
 	unsigned int m_RendererID;
-	std::unordered_map<std::string,int> m_UniformLocationCache;
+	mutable std::unordered_map<std::string,int> m_UniformLocationCache;
 };
