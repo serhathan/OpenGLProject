@@ -58,6 +58,8 @@
     <None Include="Shaders\Stencil.vs" />
     <None Include="Shaders\Stencil.fs" />
     <None Include="Shaders\SingleColor.fs" />
+    <None Include="Shaders\Blend.vs" />
+    <None Include="Shaders\Blend.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">

@@ -197,6 +197,8 @@
     <None Include="Libraries\include\assimp\SmoothingGroups.inl" />
     <None Include="Libraries\include\assimp\vector2.inl" />
     <None Include="Libraries\include\assimp\vector3.inl" />
+    <None Include="Shaders\Blend.fs" />
+    <None Include="Shaders\Blend.vs" />
     <None Include="Shaders\FragmentShader.fs" />
     <None Include="Shaders\Light.fs" />
     <None Include="Shaders\Light.vs" />
