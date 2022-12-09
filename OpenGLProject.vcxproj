@@ -202,6 +202,9 @@
     <None Include="Shaders\Light.vs" />
     <None Include="Shaders\ModelLoading.fs" />
     <None Include="Shaders\ModelLoading.vs" />
+    <None Include="Shaders\SingleColor.fs" />
+    <None Include="Shaders\Stencil.fs" />
+    <None Include="Shaders\Stencil.vs" />
     <None Include="Shaders\VertexShader.vs" />
   </ItemGroup>
   <ItemGroup>

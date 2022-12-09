@@ -55,6 +55,9 @@
     </None>
     <None Include="Libraries\include\assimp\config.h.in" />
     <None Include="Libraries\dll\assimp-vc142-mt.dll" />
+    <None Include="Shaders\Stencil.vs" />
+    <None Include="Shaders\Stencil.fs" />
+    <None Include="Shaders\SingleColor.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
