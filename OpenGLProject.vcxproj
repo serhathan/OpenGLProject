@@ -199,6 +199,8 @@
     <None Include="Libraries\include\assimp\vector3.inl" />
     <None Include="Shaders\Blend.fs" />
     <None Include="Shaders\Blend.vs" />
+    <None Include="Shaders\Cubemap.fs" />
+    <None Include="Shaders\Cubemap.vs" />
     <None Include="Shaders\FragmentShader.fs" />
     <None Include="Shaders\FrameBufferScreen.fs" />
     <None Include="Shaders\FrameBufferScreen.vs" />

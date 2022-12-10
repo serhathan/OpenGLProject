@@ -64,6 +64,8 @@
     <None Include="Shaders\FrameBufferScreen.fs" />
     <None Include="Shaders\Skybox.vs" />
     <None Include="Shaders\Skybox.fs" />
+    <None Include="Shaders\Cubemap.vs" />
+    <None Include="Shaders\Cubemap.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
