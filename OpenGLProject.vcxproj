@@ -207,6 +207,8 @@
     <None Include="Shaders\ModelLoading.fs" />
     <None Include="Shaders\ModelLoading.vs" />
     <None Include="Shaders\SingleColor.fs" />
+    <None Include="Shaders\Skybox.fs" />
+    <None Include="Shaders\Skybox.vs" />
     <None Include="Shaders\Stencil.fs" />
     <None Include="Shaders\Stencil.vs" />
     <None Include="Shaders\VertexShader.vs" />
