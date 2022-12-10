@@ -200,6 +200,8 @@
     <None Include="Shaders\Blend.fs" />
     <None Include="Shaders\Blend.vs" />
     <None Include="Shaders\FragmentShader.fs" />
+    <None Include="Shaders\FrameBufferScreen.fs" />
+    <None Include="Shaders\FrameBufferScreen.vs" />
     <None Include="Shaders\Light.fs" />
     <None Include="Shaders\Light.vs" />
     <None Include="Shaders\ModelLoading.fs" />
