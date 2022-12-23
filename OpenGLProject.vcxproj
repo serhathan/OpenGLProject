@@ -199,21 +199,26 @@
     <None Include="Libraries\include\assimp\vector3.inl" />
     <None Include="Shaders\Blend.fs" />
     <None Include="Shaders\Blend.vs" />
+    <None Include="Shaders\Blue.fs" />
     <None Include="Shaders\Cubemap.fs" />
     <None Include="Shaders\Cubemap.vs" />
     <None Include="Shaders\FragmentShader.fs" />
     <None Include="Shaders\FrameBufferScreen.fs" />
     <None Include="Shaders\FrameBufferScreen.vs" />
+    <None Include="Shaders\Green.fs" />
     <None Include="Shaders\Light.fs" />
     <None Include="Shaders\Light.vs" />
     <None Include="Shaders\ModelLoading.fs" />
     <None Include="Shaders\ModelLoading.vs" />
+    <None Include="Shaders\Red.fs" />
     <None Include="Shaders\SingleColor.fs" />
     <None Include="Shaders\Skybox.fs" />
     <None Include="Shaders\Skybox.vs" />
     <None Include="Shaders\Stencil.fs" />
     <None Include="Shaders\Stencil.vs" />
+    <None Include="Shaders\UniformBufferObject.vs" />
     <None Include="Shaders\VertexShader.vs" />
+    <None Include="Shaders\Yellow.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />

@@ -66,6 +66,11 @@
     <None Include="Shaders\Skybox.fs" />
     <None Include="Shaders\Cubemap.vs" />
     <None Include="Shaders\Cubemap.fs" />
+    <None Include="Shaders\UniformBufferObject.vs" />
+    <None Include="Shaders\Red.fs" />
+    <None Include="Shaders\Blue.fs" />
+    <None Include="Shaders\Green.fs" />
+    <None Include="Shaders\Yellow.fs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
